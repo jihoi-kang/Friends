@@ -50,7 +50,9 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
     implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModelVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltViewModelVersion"
 
     // network
     implementation "com.squareup.retrofit2:retrofit:$retrofit2Version"

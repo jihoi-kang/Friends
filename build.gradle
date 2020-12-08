@@ -19,6 +19,7 @@ buildscript {
         glideVersion = '4.11.0'
         coroutinesCoreVersion = '1.4.2'
         hiltVersion = '2.30.1-alpha'
+        hiltViewModelVersion = '1.0.0-alpha02'
         gsonVersion = '2.8.6'
 
         junitVersion = '4.13.1'
