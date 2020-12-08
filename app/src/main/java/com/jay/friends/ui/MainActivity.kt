@@ -10,7 +10,17 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(
     MainViewModel::class.java
 ) {
 
+    private val mainAdapter by lazy {
+        MainAdapter()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setupView()
+    }
+
+    private fun setupView() {
+        binding.rvUserList.adapter = mainAdapter
     }
 }
