@@ -1,12 +1,16 @@
 package com.jay.friends.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.jay.friends.R
+import com.jay.friends.base.BaseActivity
+import com.jay.friends.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(
+    R.layout.activity_main,
+    MainViewModel::class.java
+) {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
     }
 }
