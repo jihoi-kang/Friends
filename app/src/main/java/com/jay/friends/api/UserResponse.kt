@@ -58,9 +58,9 @@ data class UserResponse(
     ) {
         data class Coordinates(
             @SerializedName("latitude")
-            val latitude: String,
+            val latitude: Double,
             @SerializedName("longitude")
-            val longitude: String
+            val longitude: Double
         )
 
         data class Street(

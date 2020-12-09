@@ -12,5 +12,6 @@ data class UserModel(
     val cell: String,
     val age: Int,
     val gender: Gender,
-    val flag: Flag
+    val flag: Flag,
+    val location: Location,
 ) : Parcelable
