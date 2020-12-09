@@ -23,10 +23,10 @@ class UserDetailActivity : BaseActivity<UserDetailViewModel, ActivityUserDetailB
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupView()
+        setupUi()
     }
 
-    private fun setupView() {
+    private fun setupUi() {
         binding.item = intent.getParcelableExtra(EXTRA_USER_MODEL)
 
         (supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment)

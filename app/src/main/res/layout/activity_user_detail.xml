@@ -10,6 +10,10 @@
             name="item"
             type="com.jay.friends.model.UserModel" />
 
+        <variable
+            name="vm"
+            type="com.jay.friends.ui.detail.UserDetailViewModel" />
+
     </data>
 
 

@@ -1,6 +1,5 @@
 package com.jay.friends.ui.detail
 
-import androidx.lifecycle.ViewModel
+import com.jay.friends.base.BaseViewModel
 
-class UserDetailViewModel : ViewModel() {
-}
+class UserDetailViewModel : BaseViewModel()

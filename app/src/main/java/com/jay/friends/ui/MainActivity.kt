@@ -20,11 +20,11 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupView()
+        setupUi()
         setupObserve()
     }
 
-    private fun setupView() {
+    private fun setupUi() {
         binding.rvUserList.adapter = mainAdapter
     }
 
