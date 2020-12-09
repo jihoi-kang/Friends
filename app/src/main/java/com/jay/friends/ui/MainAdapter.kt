@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jay.friends.R
-import com.jay.friends.api.UserResponse
 import com.jay.friends.databinding.ItemUserBinding
+import com.jay.friends.model.UserModel
 
 class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
-    private val userItems = mutableListOf<UserResponse>()
+    private val userItems = mutableListOf<UserModel>()
 
-    fun setUserItems(userItems: List<UserResponse>) {
+    fun setUserItems(userItems: List<UserModel>) {
         this.userItems.clear()
         this.userItems.addAll(userItems)
         notifyDataSetChanged()
@@ -29,7 +29,7 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(userItems[position])
     }
 
     override fun getItemCount(): Int = userItems.size

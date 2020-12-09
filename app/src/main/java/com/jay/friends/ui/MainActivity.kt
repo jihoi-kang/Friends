@@ -4,7 +4,9 @@ import android.os.Bundle
 import com.jay.friends.R
 import com.jay.friends.base.BaseActivity
 import com.jay.friends.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(
     R.layout.activity_main,
     MainViewModel::class.java
