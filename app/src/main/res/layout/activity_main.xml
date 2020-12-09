@@ -24,8 +24,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:refresh="@{() -> vm.refresh()}"
-            bind:isRefreshing="@{vm.isRefreshing}">
+            bind:isRefreshing="@{vm.isRefreshing}"
+            bind:refresh="@{() -> vm.refresh()}">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_user_list"
@@ -33,6 +33,8 @@
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 bind:items="@{vm.userItems}"
+                bind:load="@{() -> vm.loadMore()}"
+                bind:threshold="@{5}"
                 tools:listitem="@layout/item_user" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

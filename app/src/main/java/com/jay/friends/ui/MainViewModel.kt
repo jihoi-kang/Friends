@@ -17,30 +17,50 @@ class MainViewModel @ViewModelInject constructor(
     private val randomUserRepository: RandomUserRepository
 ) : BaseViewModel() {
 
-    private var lastRequestedPage = STARTING_PAGE_INDEX
+    private var lastRequestedPage = START_PAGE_INDEX
 
-    private val _userItems = MutableLiveData<List<UserModel>>()
-    val userItems: LiveData<List<UserModel>> get() = _userItems
+    private val _userItems = MutableLiveData<MutableList<UserModel>>()
+    val userItems: LiveData<MutableList<UserModel>> get() = _userItems
 
     val isRefreshing: LiveData<Boolean> = userItems.map { false }
+
+    private var isRequestInProgress = false
 
     init {
         fetchUsers()
     }
 
     private fun fetchUsers() {
+        if (isRequestInProgress) return
+
         viewModelScope.launch {
-            _userItems.value =
-                randomUserRepository.fetchRandomUser(lastRequestedPage++).asUiModel()
+            isRequestInProgress = true
+            val result =
+                randomUserRepository.fetchRandomUser(lastRequestedPage).asUiModel()
+
+            val newItems = if (lastRequestedPage == START_PAGE_INDEX) {
+                result.toMutableList()
+            } else {
+                _userItems.value?.apply { addAll(result) }
+            }
+
+            _userItems.value = newItems
+            isRequestInProgress = false
+            lastRequestedPage++
         }
     }
 
     fun refresh() {
+        lastRequestedPage = START_PAGE_INDEX
+        fetchUsers()
+    }
+
+    fun loadMore() {
         fetchUsers()
     }
 
     companion object {
-        private const val STARTING_PAGE_INDEX = 1
+        private const val START_PAGE_INDEX = 1
     }
 
 }
