@@ -35,8 +35,10 @@ class MainViewModel @ViewModelInject constructor(
 
         viewModelScope.launch {
             isRequestInProgress = true
+            showLoading()
             val result =
                 randomUserRepository.fetchRandomUser(lastRequestedPage).asUiModel()
+            hideLoading()
 
             val newItems = if (lastRequestedPage == START_PAGE_INDEX) {
                 result.toMutableList()
