@@ -26,6 +26,9 @@ class MainViewModel @ViewModelInject constructor(
 
     private var isRequestInProgress = false
 
+    private val _showUserDetail = MutableLiveData<UserModel>()
+    val showUserDetail: LiveData<UserModel> get() = _showUserDetail
+
     init {
         fetchUsers()
     }
@@ -59,6 +62,10 @@ class MainViewModel @ViewModelInject constructor(
 
     fun loadMore() {
         fetchUsers()
+    }
+
+    fun showUserDetail(userModel: UserModel) {
+        _showUserDetail.value = userModel
     }
 
     companion object {

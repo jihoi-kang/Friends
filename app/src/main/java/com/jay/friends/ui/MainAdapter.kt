@@ -8,7 +8,9 @@ import com.jay.friends.R
 import com.jay.friends.databinding.ItemUserBinding
 import com.jay.friends.model.UserModel
 
-class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
+class MainAdapter(
+    private val viewModel: MainViewModel
+) : RecyclerView.Adapter<MainViewHolder>() {
 
     private val userItems = mutableListOf<UserModel>()
 
@@ -25,7 +27,7 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
             parent,
             false
         )
-        return MainViewHolder(binding)
+        return MainViewHolder(binding, viewModel)
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {

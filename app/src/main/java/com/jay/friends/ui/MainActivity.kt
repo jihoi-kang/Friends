@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.jay.friends.R
 import com.jay.friends.base.BaseActivity
 import com.jay.friends.databinding.ActivityMainBinding
+import com.jay.friends.ui.detail.UserDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -13,16 +14,24 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(
 ) {
 
     private val mainAdapter by lazy {
-        MainAdapter()
+        MainAdapter(viewModel)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setupView()
+        setupObserve()
     }
 
     private fun setupView() {
         binding.rvUserList.adapter = mainAdapter
     }
+
+    private fun setupObserve() {
+        viewModel.showUserDetail.observe(this) {
+            startActivity(UserDetailActivity.getIntent(this, it))
+        }
+    }
+
 }

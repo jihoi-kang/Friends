@@ -9,6 +9,10 @@
             name="item"
             type="com.jay.friends.model.UserModel" />
 
+        <variable
+            name="viewModel"
+            type="com.jay.friends.ui.MainViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +20,7 @@
         android:paddingEnd="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:onClick="@{() -> viewModel.showUserDetail(item)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
