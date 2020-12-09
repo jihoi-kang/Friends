@@ -1,12 +1,16 @@
 package com.jay.friends.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Flag(
     val code: String,
     val emoji: String = getEmoji(code)
-)
+) : Parcelable
 
 private fun getEmoji(code: String) =
-    when(code) {
+    when (code) {
         "AU" -> "\uD83C\uDDE6\uD83C\uDDFA"
         "BR" -> "\uD83C\uDDE7\uD83C\uDDF7"
         "CA" -> "\uD83C\uDDE8\uD83C\uDDE6"
