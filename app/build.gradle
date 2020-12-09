@@ -68,6 +68,9 @@ dependencies {
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCoreVersion"
 
+    // google map
+    implementation "com.google.android.gms:play-services-maps:$googleMapVersion"
+
     // test
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$junitExtVersion"
