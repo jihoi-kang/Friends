@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,49 +13,77 @@
     </data>
 
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="32dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_gravity="center"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                bind:loadUrl="@{item.profileUrl}" />
+            <LinearLayout
+                android:id="@+id/ll_user_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:text="@{@string/user_info_fmt(item.name, item.age, item.gender.emoji, item.flag.emoji)}"
-                android:textSize="18sp"
+                <ImageView
+                    android:layout_width="156dp"
+                    android:layout_height="156dp"
+                    android:layout_gravity="center"
+                    bind:loadUrl="@{item.profileUrl}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@{@string/user_info_fmt(item.name, item.age, item.gender.emoji, item.flag.emoji)}"
+                    android:textSize="20sp"
+                    tools:text="Jay Kang(27) \uD83D\uDE4B\u200D\u2642\uFE0F \uD83C\uDDFA\uD83C\uDDF8" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{@string/email_fmt(item.email)}"
+                    tools:text="\uD83D\uDCE7 jihoi.kang@gmail.com" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{@string/phone_fmt(item.phone)}"
+                    tools:text="\u260E\uFE0F 02-123-4567" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{@string/cell_fmt(item.cell)}"
+                    tools:text="\uD83D\uDCF1 010-9136-8073" />
+
+            </LinearLayout>
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="32dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_user_info" />
 
-            <TextView
-                android:text="@{@string/email_fmt(item.email)}"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:text="@{@string/phone_fmt(item.phone)}"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:text="@{@string/cell_fmt(item.cell)}"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>
